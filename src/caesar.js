@@ -12,7 +12,7 @@ const caesarModule = (function () {
           return false;
       }
       if (!encode) {shift *= -1};
-      
+      // encode/decode and return
       return input.toLowerCase().split('').map((letter) => {
           if (letter.charCodeAt(0) < 97) {return letter};
           let charNumber = letter.charCodeAt(0) + parseInt(shift)
