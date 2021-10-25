@@ -4,12 +4,36 @@
 // of the anonymous function on line 6
 
 const substitutionModule = (function () {
-  // you can add any code you want within this function scope
-
+  
+    
   function substitution(input, alphabet, encode = true) {
-    // your solution code here
+    // default
+      if (!input || !alphabet || alphabet.length !== 26){return false};
+      if (Array.from(new Set(alphabet)).length !== 26){return false};
+    // variables
+      let abcs = 'abcdefghijklmnopqrstuvwxyz';
+      alphabet = alphabet.split('');
+      input = input.toLowerCase();
+      let subResult = {};
+      let decode = {};
+      let result = '';
+
+      abcs.split('').forEach((letter, index) => {
+          subResult[letter] = alphabet[index];
+          decode[alphabet[index]] = letter;
+      })
+     // if false
+      if (!encode) subResult = decode;
+      input.split('').forEach(input => {
+          result += input === ' ' ? ' ' : subResult[input]
+      })
+
+      // return
+
+      return result;
   }
 
+    // subsitution function ends
   return {
     substitution,
   };
